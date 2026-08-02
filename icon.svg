@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" role="img" aria-label="Creemee cone racing across a colorful board">
+  <rect width="180" height="180" rx="36" fill="#8ed7d1"/>
+  <circle cx="143" cy="37" r="27" fill="#ffe879"/>
+  <path d="M0 142 31 119l25 13 27-26 26 24 28-20 43 29v41H0Z" fill="#3f8d81" opacity=".65"/>
+  <g stroke="#24313a" stroke-width="7" stroke-linejoin="round">
+    <path d="m66 101 25 65 26-65Z" fill="#d49b53"/>
+    <path d="M57 93c-1-15 11-22 21-19-1-16 13-27 27-20 6-13 29-8 29 9 13 1 18 14 11 25-6 10-20 13-31 8-15 10-45 11-54 2Z" fill="#fff9e4"/>
+    <path d="M83 75c9-5 18-3 24 2M72 93c12-5 25-4 35 2" fill="none" stroke="#d94f73" stroke-linecap="round"/>
+  </g>
+  <circle cx="44" cy="73" r="9" fill="#d88a35" stroke="#24313a" stroke-width="5"/>
+  <circle cx="36" cy="102" r="9" fill="#6f4632" stroke="#24313a" stroke-width="5"/>
+  <circle cx="144" cy="103" r="9" fill="#d94f73" stroke="#24313a" stroke-width="5"/>
+</svg>

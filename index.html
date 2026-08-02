@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#8ed7d1">
+  <title>CREEMEE CHASE — Race home before you melt</title>
+  <meta name="description" content="A sweet 2–4 player race around Burlington. Roll, bump rival scoops, and get all four creemees to the stand before they melt.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="CREEMEE CHASE — Race home before you melt">
+  <meta property="og:description" content="Four flavors. One creemee stand. Zero time to melt.">
+  <meta property="og:url" content="https://play.btownbrief.com/creemee-chase/">
+  <meta property="og:image" content="https://play.btownbrief.com/creemee-chase/icon-180.png">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:image" content="https://play.btownbrief.com/creemee-chase/icon-180.png">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon-180.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main id="app">
+  <section id="menu" class="screen">
+    <div class="sun" aria-hidden="true"></div>
+    <div class="menu-card">
+      <header class="brand">
+        <div class="cone-mark" aria-hidden="true"><i></i></div>
+        <p class="eyebrow">A BURLINGTON BOARDWALK BATTLE</p>
+        <h1>CREEMEE<br><span>CHASE</span></h1>
+        <p class="tagline">Four flavors. One stand.<br>Race home before you melt.</p>
+      </header>
+
+      <div class="mode-grid">
+        <article class="mode-card maple-card">
+          <div class="mode-copy"><strong>🍁 PASS &amp; PLAY</strong><span>one phone, whole crew</span></div>
+          <div class="local-start">
+            <div class="count-pills" role="group" aria-label="Pass and play players">
+              <button class="count-btn pass-count selected" data-count="2" aria-pressed="true">2</button>
+              <button class="count-btn pass-count" data-count="3" aria-pressed="false">3</button>
+              <button class="count-btn pass-count" data-count="4" aria-pressed="false">4</button>
+            </div>
+            <button id="passStart" class="go-btn">SCOOP! →</button>
+          </div>
+        </article>
+
+        <button id="botStart" class="mode-card bot-card">
+          <span class="mode-copy"><strong>🍦 THE CREEMEE KID</strong><span>knows every shortcut before the sprinkles melt</span></span>
+          <span class="go-arrow">PLAY →</span>
+        </button>
+
+        <div class="online-label">OR RACE ACROSS TOWN · 2–4 PHONES</div>
+        <div class="online-row">
+          <button id="hostBtn" class="mode-card online-card"><strong>📣 START A CREW</strong><span>get a 4-letter code</span></button>
+          <button id="joinBtn" class="mode-card online-card"><strong>🔑 JOIN A CREW</strong><span>bring their code</span></button>
+        </div>
+        <button id="rejoinBtn" class="rejoin hidden"></button>
+      </div>
+
+      <details class="howto">
+        <summary>HOW TO CHASE</summary>
+        <p>Roll a <b>6</b> to leave base — and roll again. Tap a scoop to move the exact count. Bump lone rivals home, but stars and flavor starts are safe. Get all four to the center stand; the finish needs an exact roll.</p>
+      </details>
+    </div>
+
+    <div id="onlinePanel" class="overlay hidden">
+      <div class="op-card">
+        <div id="opTitle" class="op-title">START A CREW</div>
+        <label class="op-label" for="opName">YOUR NAME</label>
+        <input id="opName" maxlength="24" autocomplete="nickname" placeholder="Creemee fan">
+        <div id="opSeatsWrap">
+          <div class="op-label">CREW SIZE</div>
+          <div id="opSeats" class="seat-btns" role="group" aria-label="Phones in the crew">
+            <button class="seat-btn selected" data-seats="2" aria-pressed="true">2</button>
+            <button class="seat-btn" data-seats="3" aria-pressed="false">3</button>
+            <button class="seat-btn" data-seats="4" aria-pressed="false">4</button>
+          </div>
+        </div>
+        <div id="opCodeWrap" class="hidden">
+          <label class="op-label" for="opCode">CREW CODE</label>
+          <input id="opCode" maxlength="4" autocapitalize="characters" autocomplete="off" spellcheck="false" placeholder="ABCD">
+        </div>
+        <div id="opError" class="op-error hidden"></div>
+        <div class="op-btns"><button id="opCancel" class="chip-btn">BACK</button><button id="opGo" class="big-btn">GET A CODE</button></div>
+      </div>
+    </div>
+
+    <div id="lobby" class="overlay hidden">
+      <div class="op-card">
+        <div class="op-title">READ THIS CODE TO YOUR CREW</div>
+        <div id="lobbyCode"></div>
+        <div id="lobbyHint">they tap JOIN A CREW and type it in</div>
+        <div class="op-label center">AT THE STAND</div>
+        <ul id="lobbyNames" aria-live="polite"></ul>
+        <div class="op-btns"><button id="lobbyCancel" class="chip-btn">CALL IT OFF</button></div>
+      </div>
+    </div>
+
+    <footer>A Btown Games production · <a href="https://play.btownbrief.com/">More games →</a> · <a href="https://www.btownbrief.com">Read the BTown Brief →</a></footer>
+  </section>
+
+  <section id="game" class="screen hidden">
+    <header class="game-top">
+      <button id="homeBtn" class="chip-btn" aria-label="Back to menu">← STAND</button>
+      <div id="roomChip" class="room-chip hidden"></div>
+      <button id="muteBtn" class="round-btn" aria-label="Mute sound">🔊</button>
+    </header>
+
+    <div id="scoreboard" aria-label="Players"></div>
+    <div id="turnBanner" aria-live="polite"></div>
+
+    <div class="board-wrap">
+      <div id="board" aria-label="Creemee Chase board">
+        <div class="base-zone base-0"><b>MAPLE</b></div>
+        <div class="base-zone base-1"><b>CHOCOLATE</b></div>
+        <div class="base-zone base-2"><b>VANILLA</b></div>
+        <div class="base-zone base-3"><b>RASPBERRY</b></div>
+        <div id="trackCells"></div>
+        <div id="homeCells"></div>
+        <div class="center-stand" aria-label="Creemee stand"><span>🍦</span><b>STAND</b></div>
+        <div id="tokens"></div>
+      </div>
+    </div>
+
+    <div id="actionPanel">
+      <button id="rollBtn" class="roll-btn"><span id="dieFace">⚄</span><span id="rollLabel">ROLL THE DICE</span></button>
+      <button id="passBtn" class="pass-btn hidden">NO MOVE — PASS</button>
+      <div id="actionHint">Roll to start the chase.</div>
+    </div>
+
+    <div id="result" class="result-overlay hidden" aria-live="polite">
+      <div class="result-card">
+        <div class="result-cone">🍦</div>
+        <h2 id="resultTitle">SWEET FINISH!</h2>
+        <ol id="rankings"></ol>
+        <button id="rematchBtn" class="big-btn">RACE AGAIN</button>
+        <button id="resultHomeBtn" class="text-btn">BACK TO THE STAND</button>
+      </div>
+    </div>
+  </section>
+</main>
+<script type="module" src="js/main.js"></script>
+<script src="https://play.btownbrief.com/ticker.js" defer></script>
+</body>
+</html>

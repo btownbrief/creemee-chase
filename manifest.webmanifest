@@ -1,0 +1,13 @@
+{
+  "name": "CREEMEE CHASE",
+  "short_name": "Creemee Chase",
+  "description": "Race four Burlington creemee flavors home before they melt.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#8ed7d1",
+  "theme_color": "#8ed7d1",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml" },
+    { "src": "icon-180.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}
